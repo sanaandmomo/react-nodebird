@@ -11,14 +11,15 @@ import FollowList from '../components/FollowList';
 import { LOAD_MY_INFO_REQUEST, MOVE_MENU } from '../reducers/user';
 import wrapper from '../store/configureStore';
 import serverSideRender from '../util/serverSideRender';
+import backUrl from '../config/config';
 
 const fetcher = (url) => axios.get(url, { withCredentials: true }).then((result) => result.data);
 
 const Profile = () => {
     const dispatch = useDispatch();
     const { me } = useSelector((state) => state.user);
-    const { data: followers, error: followerError } = useSWR('http://localhost:3065/users/followers', fetcher);
-    const { data: followings, error: followingError } = useSWR('http://localhost:3065/users/followings', fetcher);
+    const { data: followers, error: followerError } = useSWR(`${backUrl}/users/followers`, fetcher);
+    const { data: followings, error: followingError } = useSWR(`${backUrl}/users/followings`, fetcher);
 
     console.log('profile render, followings: ', followings, followingError);
 
