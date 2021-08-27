@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(cors({
-    origin: ['http://localhost:3060', 'nodebird.com'], // api 허용
+    origin: ['http://localhost:3060', 'nodebird.com', 'http://13.124.184.176'], // api 허용
     credentials: true, // 쿠키 허용
 }));
 app.use('/', express.static(path.join(__dirname, 'uploads')));
